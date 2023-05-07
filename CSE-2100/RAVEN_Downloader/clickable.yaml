@@ -1,0 +1,10 @@
+framework: ubuntu-sdk-20.04
+clickable_minimum_required: "7"
+builder: cmake
+kill: raven.downloader
+
+dependencies_ppa:
+    - ppa:tomtomtom/yt-dlp
+
+dependencies_target:
+    - yt-dlp ffmpeg

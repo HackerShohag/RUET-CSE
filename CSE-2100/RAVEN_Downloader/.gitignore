@@ -1,0 +1,6 @@
+build
+*.user
+.clickable
+loop.py
+.vscode
+*.shared
