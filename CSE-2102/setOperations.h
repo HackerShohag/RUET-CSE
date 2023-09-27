@@ -3,8 +3,9 @@ extern "C"
 {
 #endif
 
-#include "operations.h"
 #include <iostream>
+#include "operations.h"
+    using namespace std;
 
     template <size_t N>
     bool contains(int (&a)[N], int &x);
@@ -24,27 +25,28 @@ extern "C"
     {
         for (int i : a)
         {
-            if (a[i] == x)
+            if (i == x)
                 return true;
         }
         return false;
     }
 
-    template <size_t N>
-    int *setUnion(int (&a)[N], int (&b)[N])
+    template <size_t N, size_t M>
+    void setUnion(int (&a)[N], int (&b)[M])
     {
         int k = 0;
-        int u[] = {};
+        int u[M + N] = {};
 
         for (int i : a)
         {
             u[i] = i;
             k++;
+            cout << " u[i]: " << u[i] << endl;
         }
 
         for (int i : b)
         {
-            if (!contains<int>(u, i))
+            if (!contains<M + N>(u, i))
             {
                 u[k] = i;
                 k++;
@@ -55,8 +57,6 @@ extern "C"
         // {
         //     std::cout << u[i] << "\t";
         // }
-
-        return u;
     }
 
     // int *setIntersection(int (&a)[N], int (&b)[N])

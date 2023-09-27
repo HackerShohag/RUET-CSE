@@ -25,8 +25,8 @@ int main()
     printSet(a);
     printSet(b);
 
-    cout << "Union: ";
-    printSet(setUnion<int>(a, b));
+    setUnion<4, 3>(a, b);
+    // printSet();
 
     // cout << "\nIntersection: "; printSet(setIntersection(a, b));
     // cout << "\nComplement: "; printSet(setComplement(a, b));

@@ -1,4 +1,5 @@
 # configure
+mkdir -p build
 cmake -S . -B build/
 
 # compile
