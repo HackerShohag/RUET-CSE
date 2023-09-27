@@ -1,3 +1,6 @@
 [submodule "CSE-2100/RAVEN_Downloader"]
 	path = CSE-2100/RAVEN_Downloader
 	url = git@github.com:HackerShohag/RAVEN_Downloader.git
+[submodule "CSE-2102/lab05/matplotplusplus"]
+	path = CSE-2102/lab05/matplotplusplus
+	url = git@github.com:alandefreitas/matplotplusplus.git
