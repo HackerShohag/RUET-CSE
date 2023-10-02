@@ -1,0 +1,15 @@
+#!/bin/sh
+
+file="$1"
+filename=$(basename $file .asm)
+
+# assemble & link
+nasm -f elf $file
+gcc -m32 -o $filename $filename.o
+
+# clean
+rm $filename.o
+
+# run
+echo "\n\nOutput of the file:"
+./$filename
