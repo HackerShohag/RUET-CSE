@@ -11,7 +11,7 @@ NORMAL=$(tput sgr0)
 intro="Assemble and Run program using nasm and with gcc linker. It assembles using nasm and links using gcc to binary."
 author="Author: Abdullah AL Shohag <HackerShohag@outlook.com>\n\
 Github: https://github.com/HackerShohag"
-usage="Usagae:\n\t./assemble filename \t\tto tassemble, link and run"
+usage="Usagae:\n\t${0} filename \t\tto tassemble, link and run"
 
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
   echo ${intro} "\n\n" ${usage} "\n\n"${author}
@@ -23,13 +23,13 @@ filename=$(basename $file .asm)
 
 if [ $# -eq 0 ] ; then
     echo "${RED}${BOLD}ERROR: Please, specify a filename.${NORMAL}${NC}\n"
-    echo $usage "\n\n"${author}
+    echo $usage
     exit 0
 fi
 
 if ! [ -f ./$file ]; then
   echo "${RED}${BOLD}ERROR: \"$file\" does not exist.${NORMAL}${NC}\n"
-  echo $usage "\n\n"${author}
+  echo $usage
   exit 0
 fi
 
