@@ -23,13 +23,13 @@ filename=$(basename $file .asm)
 
 if [ $# -eq 0 ] ; then
     echo "${RED}${BOLD}ERROR: Please, specify a filename.${NORMAL}${NC}\n"
-    echo $usage
+    echo $usage "\n\n"${author}
     exit 0
 fi
 
-if ! [ -f ./$file ]; then
+if ! [ -f $file ]; then
   echo "${RED}${BOLD}ERROR: \"$file\" does not exist.${NORMAL}${NC}\n"
-  echo $usage
+  echo $usage "\n\n"${author}
   exit 0
 fi
 
@@ -44,13 +44,23 @@ fi
 echo -- Found file $file
 
 # assemble
-echo "${PURPLE}${BOLD}NASM:${NORMAL}${PURPLE} Assebmling $file"
-nasm -f elf $file > /dev/null 2>&1
+echo "${PURPLE}${BOLD}NASM:${NORMAL}${PURPLE} Assebmling $file${NORMAL}${NC}"
+nasmerr=$(nasm -f elf $file)
+
+if ! [ $? -eq 0 ]; then
+    echo $nasmerr
+    exit 0
+fi
 echo "${GREEN}${BOLD}NASM:${NORMAL}${GREEN} Assebmled $file"
 
 #link
 echo "${PURPLE}${BOLD}GCC:${NORMAL}${PURPLE} Linking $filename.o using gcc${NORMAL}${NC}"
-gcc -m32 -o $filename $filename.o > /dev/null 2>&1
+linkerr=$(gcc -m32 -o $filename $filename.o)
+
+if ! [ $? -eq 0 ]; then
+    echo $linkerr
+    exit 0
+fi
 echo "${GREEN}${BOLD}GCC:${NORMAL}${GREEN} Linked $filename.o to $filename${NORMAL}${NC}"
 
 # build message
