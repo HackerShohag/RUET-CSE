@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "datageneratortools.h"
 
 using namespace std;
 
@@ -32,51 +33,37 @@ int binary_search(int x, int array[], int size, int *steps)
     return -1;
 }
 
-void generateNumbers(int count, string filename)
-{
-    ofstream file;
-    file.open(filename);
-
-    for (int i = 0; i < count; i++)
-    {
-        file << rand() % 1000 << " ";
-    }
-    file.close();
-}
-
-void readData(string filename, int array[])
-{
-    ifstream file;
-    file.open(filename);
-
-    int i = 0;
-    while (file >> array[i])
-    {
-        i++;
-    }
-    file.close();
-}
-
 int main()
 {
     int numbers, n = 5;
     for (int i = 0; i < n; i++)
     {
+        FILE *file;
         numbers = (i + 1) * 10000;
         int x = rand() % 1000, array[numbers];
-
         string filename = "lab02_assets/search_";
         filename.append(to_string(i + 1));
         filename.append(".txt");
 
-        generateNumbers(numbers, filename);
+        if (file = fopen(filename.c_str(), "r"))
+        {
+            fclose(file);
+            printf("Files exist. Skipping data generate.\n");
+        }
+        else
+        {
+            generateNumbers(numbers, filename);
+            printf("Files deosn't exist. Generating data.\n");
+        }
+
         readData(filename, array);
-        sort(array, array + numbers);
 
         int pos = linear_search(x, array, numbers);
         cout << "For " << numbers << " numbers: "
              << "for Linear Search Algorithm:"
              << "\tKey: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (pos == -1 ? numbers : (pos + 1)) << endl;
+
+        sort(array, array + numbers);
 
         int p = 0;
         int *steps;
