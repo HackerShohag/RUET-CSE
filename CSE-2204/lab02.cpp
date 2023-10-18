@@ -1,77 +1,64 @@
-#include <bits/stdc++.h>
-#include "datageneratortools.h"
+#include <iostream>
+#include "functionInput.h"
 
 using namespace std;
 
-int linear_search(int x, int array[], int size)
+double newtonRapsonMethod(int x, double error)
 {
-    for (int i = 0; i < size; i++)
+    double x1 = x - function(x) / functionDerivative(x);
+    double x2 = x1 - function(x1) / functionDerivative(x1);
+
+    while (abs(x2 - x1) > error)
     {
-        if (array[i] == x)
-            return i;
+        x1 = x2;
+        x2 = x1 - function(x1) / functionDerivative(x1);
+        cout << "x1: " << x1 << "\tx2: " << x2 << "\n";
     }
-    return -1;
+
+    return x2;
 }
 
-int binary_search(int x, int array[], int size, int *steps)
+double phiFunction(double x, int coeff[], int degree)
 {
-    int l = 0, h = size - 1, c;
-
-    while (l <= h)
+    double sum = 0;
+    for (int i = 0; i <= degree; i++)
     {
-        c = (l + h) / 2;
-        if (array[c] == x)
-            return c;
-
-        if (array[c] < x)
-            l = c + 1;
-        if (array[c] > x)
-            h = c - 1;
-
-        (*steps)++;
+        sum += coeff[i] * pow(x, i);
     }
-    return -1;
+    return sum;
+}
+
+double iterarionMethod(double x, double error)
+{
+
+    int degree;
+    cout << "Enter degree for phi function: ";
+    cin >> degree;
+    int coeff[degree + 1];
+    cout << "Enter " << degree + 1 << " Coefficients: ";
+    for (int i = 0; i <= degree; i++)
+        cin >> coeff[i];
+
+    double x1 = phiFunction(x, coeff, degree);
+    double x2 = phiFunction(x1, coeff, degree);
+
+    while (abs(x2 - x1) > error)
+    {
+        x1 = x2;
+        x2 = phiFunction(x1, coeff, degree);
+        cout << "x1: " << x1 << "\tx2: " << x2 << "\n";
+    }
+
+    return x2;
 }
 
 int main()
 {
-    int numbers, n = 5;
-    for (int i = 0; i < n; i++)
-    {
-        FILE *file;
-        numbers = (i + 1) * 10000;
-        int x = rand() % 1000, array[numbers];
-        string filename = "lab02_assets/search_";
-        filename.append(to_string(i + 1));
-        filename.append(".txt");
+    takeInputForFunction();
+    double a;
 
-        if (file = fopen(filename.c_str(), "r"))
-        {
-            fclose(file);
-            printf("Files exist. Skipping data generate.\n");
-        }
-        else
-        {
-            generateNumbers(numbers, filename);
-            printf("Files deosn't exist. Generating data.\n");
-        }
+    cout << "Enter guess: ";
+    cin >> a;
 
-        readData(filename, array);
-
-        int pos = linear_search(x, array, numbers);
-        cout << "For " << numbers << " numbers: "
-             << "for Linear Search Algorithm:"
-             << "\tKey: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (pos == -1 ? numbers : (pos + 1)) << endl;
-
-        sort(array, array + numbers);
-
-        int p = 0;
-        int *steps;
-        steps = &p;
-        pos = binary_search(x, array, numbers, steps);
-        cout << "For " << numbers << " numbers: "
-             << "for Binary Search Algorithm:"
-             << "\tKey: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (*steps) << endl
-             << endl;
-    }
+    cout << "Root by Newron-Rapson method: " << newtonRapsonMethod(a, 0.0001) << "\n";
 }
