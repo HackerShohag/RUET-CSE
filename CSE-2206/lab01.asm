@@ -1,19 +1,52 @@
-section .data
-	hello:     db 'Hello world!',10    ; 'Hello world!' plus a linefeed character
-	helloLen:  equ $-hello             ; Length of the 'Hello world!' string
-	                                   ; (I'll explain soon)
+.MODEL SMALL
+.STACK 100H
+.DATA
+	MSG1   DB "ENTER THE FIRST DIGIT: $"
+	MSG2   DB 0DH,0AH,"ENTER THE SECOND DIGIT: $"
+	MSG3   DB 0DH,0AH,"THE SUBSTRACTION IS $"
+	NUM1   DB ?
+	NUM2   DB ?
+	RESULT DB ?
+.CODE
+MAIN PROC
+	     MOV AX, @DATA
+	     MOV DS, AX
 
-section .text
-	global main
+	; INPUT NUM1
+	     LEA DX, MSG1
+	     MOV AH, 9
+	     INT 21H
 
-main:
-	mov eax,4            ; The system call for write (sys_write)
-	mov ebx,1            ; File descriptor 1 - standard output
-	mov ecx,hello        ; Put the offset of hello in ecx
-	mov edx,helloLen     ; helloLen is a constant, so we don't need to say
-	                     ;  mov edx,[helloLen] to get it's actual value
-	int 80h              ; Call the kernel
+	     MOV AH, 1
+	     INT 21H
+	     MOV NUM1, AL
+	; INPUT NUM2
+	     LEA DX, MSG2
+	     MOV AH, 9
+	     INT 21H
 
-	mov eax,1            ; The system call for exit (sys_exit)
-	mov ebx,0            ; Exit with return code of 0 (no error)
-	int 80h
+	     MOV AH, 1
+	     INT 21H
+	     MOV NUM2, AL
+
+	; SUBSTRACTION
+	     MOV AL, NUM1
+	     MOV BL, NUM2
+	     SUB AL, BL
+	     MOV RESULT, AL
+
+	     LEA DX, MSG3
+	     MOV AH, 9
+	     INT 21H
+
+	     MOV AH, 2
+	     MOV DL, RESULT
+	     ADD DL, '0'
+	     INT 21H
+
+	; RETURN
+	     MOV AH, 4CH
+	     INT 21H
+
+MAIN ENDP
+END MAIN

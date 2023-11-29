@@ -35,12 +35,14 @@ int binary_search(int x, int array[], int size, int *steps)
 
 int main()
 {
-    int numbers, n = 5;
+    int numbers, n = 5, x;
+    cout << "Enter the number to search: ";
+    cin >> x;
     for (int i = 0; i < n; i++)
     {
         FILE *file;
         numbers = (i + 1) * 10000;
-        int x = rand() % 1000, array[numbers];
+        int array[numbers];
         string filename = "lab02_assets/search_";
         filename.append(to_string(i + 1));
         filename.append(".txt");
@@ -61,7 +63,7 @@ int main()
         int pos = linear_search(x, array, numbers);
         cout << "For " << numbers << " numbers: "
              << "for Linear Search Algorithm:"
-             << "\tKey: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (pos == -1 ? numbers : (pos + 1)) << endl;
+             << "\tPosition: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (pos == -1 ? numbers : (pos + 1)) << endl;
 
         sort(array, array + numbers);
 
@@ -71,7 +73,7 @@ int main()
         pos = binary_search(x, array, numbers, steps);
         cout << "For " << numbers << " numbers: "
              << "for Binary Search Algorithm:"
-             << "\tKey: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (*steps) << endl
+             << "\tPosition: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (*steps) << endl
              << endl;
     }
 }
