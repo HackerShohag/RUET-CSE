@@ -1,0 +1,95 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{floatrow}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usetikzlibrary{shapes.geometric}
+
+
+\usepackage{pgfplotstable}
+
+\pgfplotstableread[col sep=comma]{StudentInfo.csv}{\StudentInfo}
+\pgfplotstableread[col sep=comma]{TeacherInfo.csv}{\TeacherInfo}
+
+
+\newcommand{\LogoPath}{RUET_logo.png}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+
+        \AddToShipoutPicture*{\put(0.125\paperwidth,0.125\paperheight){
+                \transparent{0.1}
+                \includegraphics*[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{RUET_logo.png}
+            }
+        }
+        \textbf{\textcolor{yellow}{\rmfamily Haven's Light is Our Guide}}
+
+        \begin{figure}[h]
+            \transparent{0.8}
+            \centering
+            \includegraphics[width=0.3\textwidth]{\LogoPath}
+        \end{figure}
+
+        \vspace*{0in}
+        \Large
+        \textbf{\mbox{Rajshahi University of Engineering \& Technology}}
+        \large
+        \textbf{\mbox{\textcolor{blue}{Department of Computer Science \& Engineering}}}
+
+        \vfill
+        \Huge
+        \textbf{\mbox{Lab Report}}
+        \vfill
+
+        \begin{table}[h]
+            \centering
+            \begin{tabularx}{0.7\paperwidth}{|c|X|}
+                \hline
+                \textbf{Course Code:}     & CSE 2206                                                           \\
+                \hline
+                \textbf{Course Title:}    & Microprocessors, Microcontrollers and Assembly Language Sessional  \\
+                \hline
+                \textbf{Experiment No:}   & 04                                                                 \\
+                \hline
+                \textbf{Experiment Name:} & Counting the number of 1s in a binary and determining odd or even. \\
+                \hline
+            \end{tabularx}
+        \end{table}
+
+        \vspace{0.5in}
+        \textbf{Date:} \\
+        \today
+
+        \vfill
+
+        \begin{table}[h]
+            \centering
+            \begin{tikzpicture}
+                % First rounded rectangle
+                \node[draw, rounded corners=10pt, minimum width=2cm, minimum height=3.5cm, align=left] at (-4.5,0) {
+                    \pgfplotstabletypeset[
+                        columns={StudentInfo},
+                        columns/StudentInfo/.style={string type, column name=},
+                    ]{\StudentInfo}
+                };
+
+                % Second rounded rectangle
+                \node[draw, rounded corners=10pt, minimum width=2cm, minimum height=3.5cm, align=right] at (4,0) {
+                    \pgfplotstabletypeset[
+                        columns={TeacherInfo},
+                        columns/TeacherInfo/.style={string type, column name=},
+                    ]{\TeacherInfo}
+                };
+            \end{tikzpicture}
+
+        \end{table}
+    \end{center}
+\end{titlepage}
+\end{document}

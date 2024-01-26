@@ -1,18 +1,22 @@
 #include <iostream>
-#include "functionInput.h"
+#include "headers/functionInput.h"
 
 using namespace std;
 
-double newtonRapsonMethod(int x, double error)
+double newtonRapsonMethod(double x, double error)
 {
     double x1 = x - function(x) / functionDerivative(x);
     double x2 = x1 - function(x1) / functionDerivative(x1);
 
+    cout << "x0: " << x << "\tx1: " << x1 << "\n";
+
+    int i = 1;
     while (abs(x2 - x1) > error)
     {
         x1 = x2;
         x2 = x1 - function(x1) / functionDerivative(x1);
-        cout << "x1: " << x1 << "\tx2: " << x2 << "\n";
+        cout << "x" << i << ": " << x1 << "\tx" << (i + 1) << ": " << x2 << "\n";
+        i++;
     }
 
     return x2;
@@ -30,7 +34,6 @@ double phiFunction(double x, int coeff[], int degree)
 
 double iterarionMethod(double x, double error)
 {
-
     int degree;
     cout << "Enter degree for phi function: ";
     cin >> degree;
@@ -60,5 +63,30 @@ int main()
     cout << "Enter guess: ";
     cin >> a;
 
-    cout << "Root by Newron-Rapson method: " << newtonRapsonMethod(a, 0.0001) << "\n";
+    cout << "\n1. Newton Rapson Method\n2. Iteration Method\n";
+    cout << "Choose the method you want to use: ";
+
+    int choice;
+    cin >> choice;
+    switch (choice)
+    {
+        {
+        case 1:
+        {
+            double sol = newtonRapsonMethod(a, 0.0001);
+            cout << "The solution using Newton-Rapson Method: " << sol << endl;
+            break;
+        }
+
+        case 2:
+        {
+            double sol = iterarionMethod(a, 0.0001);
+            cout << "The solution using Iteration Method: " << sol << endl;
+            break;
+        }
+
+        default:
+            break;
+        }
+    }
 }

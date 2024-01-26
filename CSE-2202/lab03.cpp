@@ -1,6 +1,6 @@
 #include <iostream>
 #include <chrono>
-#include "datageneratortools.h"
+#include "headers/datageneratortools.h"
 
 using namespace std;
 
@@ -19,7 +19,7 @@ int minmaxIterative(int array[], int size, int *min, int *max)
     return i;
 }
 
-int minmaxRecursive(int array[], int start, int end, int *min, int *max, int *steps)
+void minmaxRecursive(int array[], int start, int end, int *min, int *max, int *steps)
 {
     if (start == end)
     {
@@ -27,11 +27,8 @@ int minmaxRecursive(int array[], int start, int end, int *min, int *max, int *st
             *max = array[start];
         else if (array[start] < *min)
             *min = array[start];
-        return 1;
+        return;
     }
-
-    cout << "Stack here" << endl;
-
     int mid = (start + end) / 2;
     minmaxRecursive(array, start, mid, min, max, steps);
     minmaxRecursive(array, mid + 1, end, min, max, steps);
@@ -95,9 +92,8 @@ void mergesort(int array[], int start, int end)
 void outputPivot(int array[], int start, int end, int pivot)
 {
     for (int i = start; i < end; i++)
-    {
         cout << array[i] << " ";
-    }
+
     cout << "\nPivot: " << pivot << endl;
 }
 
@@ -106,7 +102,7 @@ void quicksort(int array[], int start, int end)
     if (start < end)
     {
         int pivot = array[end];
-        outputPivot(array, start, end, pivot);
+        // outputPivot(array, start, end, pivot);
         int i = start - 1;
 
         for (int j = start; j <= end - 1; j++)
@@ -160,33 +156,33 @@ int main()
 
         int min, max, steps = 0;
 
-        // auto start1 = steady_clock::now();
-        // steps = minmaxIterative(array, numbers, &min, &max);
-        // auto end1 = steady_clock::now();
-        // cout << "Iterative for " << numbers << " numbers with " << (end1 - start1).count() << " ms" << endl;
+        auto start1 = steady_clock::now();
+        steps = minmaxIterative(array, numbers, &min, &max);
+        auto end1 = steady_clock::now();
+        cout << "Iterative for " << numbers << " numbers with " << (end1 - start1).count() << " ms" << endl;
 
-        // auto start2 = steady_clock::now();
-        // minmaxRecursive(array, 0, numbers - 1, &min, &max, &steps);
-        // auto end2 = steady_clock::now();
-        // cout << "Recursive for " << numbers << " numbers with " << (end2 - start2).count() << " ms" << endl;
+        auto start2 = steady_clock::now();
+        minmaxRecursive(array, 0, numbers - 1, &min, &max, &steps);
+        auto end2 = steady_clock::now();
+        cout << "Recursive for " << numbers << " numbers with " << (end2 - start2).count() << " ms" << endl;
 
-        // auto start3 = steady_clock::now();
-        // mergesort(array, 0, numbers);
-        // auto end3 = steady_clock::now();
-        // cout << "\nMerge sort for " << numbers << " numbers with " << (end3 - start3).count() << " ms" << endl;
+        auto start3 = steady_clock::now();
+        mergesort(array, 0, numbers);
+        auto end3 = steady_clock::now();
+        cout << "Merge sort for " << numbers << " numbers with " << (end3 - start3).count() << " ms" << endl;
 
-        // auto start4 = steady_clock::now();
-        // quicksort(array, 0, numbers);
-        // auto end4 = steady_clock::now();
-        // cout << "Quick sort for " << numbers << " numbers with " << (end4 - start4).count() << " ms\n"
-        //      << endl;
+        auto start4 = steady_clock::now();
+        quicksort(array, 0, numbers);
+        auto end4 = steady_clock::now();
+        cout << "Quick sort for " << numbers << " numbers with " << (end4 - start4).count() << " ms\n"
+             << endl;
 
-        quicksort(array, 0, 7);
-        for (int i = 0; i < 8; i++)
-        {
-            cout << array[i] << " ";
-        }
-        cout << endl;
+        // quicksort(array, 0, 7);
+        // for (int i = 0; i < 8; i++)
+        // {
+        //     cout << array[i] << " ";
+        // }
+        // cout << endl;
     }
 
     return 0;

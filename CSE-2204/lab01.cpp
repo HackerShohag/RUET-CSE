@@ -4,25 +4,11 @@
 
 using namespace std;
 
-/**
- * Calculates the value of a cubic function at a given point.
- *
- * @param x The point at which to evaluate the function.
- * @return The value of the function at the given point.
- */
 double function(double x)
 {
-    return x * x * x - 2 * x - 5;
+    return x * x * x - 2 * x + 4;
 }
 
-/**
- * Calculates the root of a function using the bisection method.
- *
- * @param a The lower bound of the interval.
- * @param b The upper bound of the interval.
- * @param print If true, prints the iteration table.
- * @return The root of the function.
- */
 double rootByBisection(double a, double b, bool print = false)
 {
     int i = 0;
@@ -48,13 +34,6 @@ double rootByBisection(double a, double b, bool print = false)
     return c;
 }
 
-/**
- * Calculates the root of a function using the false position method.
- * @param a The lower bound of the interval.
- * @param b The upper bound of the interval.
- * @param print If true, prints the iteration table.
- * @return The root of the function.
- */
 double rootByFalsePosition(double a, double b, bool print = false)
 {
     int i = 0;
@@ -89,7 +68,7 @@ int main()
         function(b) > function(a) ? b++ : a--;
     }
 
-    // cout << "a: " << a << "\tb: " << b << "\n";
+    cout << "a: " << a << "\tb: " << b << "\n";
 
     cout << "Menu Program: \n";
     cout << "\t1. Bisection Method\n";
@@ -110,8 +89,12 @@ int main()
         rootByFalsePosition(a, b, true);
         break;
     case 3:
-        cout << "Bisection Method: " << rootByBisection(a, b) << " with error: " << function(rootByBisection(a, b)) * 100 << "%\n";
-        cout << "False Position Method: " << rootByFalsePosition(a, b) << " with error: " << function(rootByFalsePosition(a, b)) * 100 << "%\n";
+        cout << "Bisection Method: "
+             << " with error: " << function(rootByBisection(a, b)) * 100 << "%\n";
+        rootByBisection(a, b, true);
+        cout << "False Position Method: "
+             << " with error: " << function(rootByFalsePosition(a, b)) * 100 << "%\n";
+        rootByFalsePosition(a, b, true);
         break;
     }
 }

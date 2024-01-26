@@ -1,0 +1,43 @@
+\frametitle{Merge Sort Algorithm}
+
+  \begin{enumerate}
+    \item Repeatedly merge sublists.
+  \end{enumerate}
+
+  \begin{lstlisting}[caption={Merge Sort in C++}, label=mergeSortCode]
+void merge(int ax[], int lb, int mid, int ub) {
+  int i, j, k;
+  i = lb;
+  j = mid + 1;
+  k = lb;
+  int bx[n];
+  while (i <= mid && j <= ub) {
+      if (ax[i] <= ax[j]) {
+          bx[k] = ax[i];
+          i++;
+          k++;
+      } else {
+          bx[k] = ax[j];
+          j++;
+          k++;
+      }
+  }
+  if (i > mid) {
+      while (j <= ub) {
+          bx[k] = ax[j];
+          j++;
+          k++;
+      }
+  } else {
+      while (i <= mid) {
+          bx[k] = ax[i];
+          i++;
+          k++;
+      }
+  }
+  for (int k = lb; k <= ub; k++) {
+      ax[k] = bx[k];
+  }
+}
+  \end{lstlisting}
+

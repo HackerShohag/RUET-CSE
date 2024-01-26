@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{ulem}
+
+\bibliographystyle{plain}
+
+\title{2003028}
+\author{Md. Abdullah AL Mamun}
+\begin{document}
+
+\maketitle
+
+This research work is focused on detecting low-grade glioma tumorous cells in MRI images. Glioma is a common brain tumor, that exhibits properties of benign tumors. We used the TCGA-LGG Segmentation dataset for our research. It consists of 3929 brain tumor images and corresponding FLAIR abnormality segmentation masks obtained from 110 patients. \citation{wadhwa2019review}.
+
+Table \ref{tab:encoder-models} lists the models used as encoder for U-Net architecture.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Models used for U-Net encoder and trainable blocks/stages for finetuning.}
+    \label{tab:encoder-models}
+    \begin{tabular}{c c c}
+        \hline
+        Family       & Models                   & Trainable Blocks \\
+        \hline
+        EfficientNet & EfficientNetB0 to B7     & Block 30 to 32   \\
+        DenseNet     & DenseNet169, DenseNet201 & Block 7          \\
+        VGG          & VGG16, VGG19             & Block 5          \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\bibliography{references}
+
+\end{document}

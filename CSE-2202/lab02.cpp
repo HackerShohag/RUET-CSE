@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "datageneratortools.h"
+#include "headers/datageneratortools.h"
 
 using namespace std;
 
@@ -73,7 +73,6 @@ int main()
         pos = binary_search(x, array, numbers, steps);
         cout << "For " << numbers << " numbers: "
              << "for Binary Search Algorithm:"
-             << "\tPosition: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (*steps) << endl
-             << endl;
+             << "\tPosition: " << pos << "\tValue: " << array[pos] << "\tTotal Steps: " << (*steps) << endl;
     }
 }

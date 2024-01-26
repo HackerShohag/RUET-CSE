@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{program}
+\usepackage{algorithm2e}
+\usepackage{listings}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{program}
+\usepackage{algorithm2e}
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+% Define the style for C++ code
+\lstdefinestyle{cppstyle}{
+  language=C++,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{orange},
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  backgroundcolor=\color{gray!5},
+  frame=single,
+  rulecolor=\color{black!30},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+
+
+\begin{document}
+
+\lipsum[1]
+
+\begin{table}[!hbt]
+    \centering
+    \caption{Obtained Marks.}
+    \label{tab-marks}
+
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline Name   & Math & Phy & Chem & English \\
+        \hline Sakib  & 40   & 42  & 78   & 67      \\
+        \hline Tonmoy & 40   & 42  & 78   & 67      \\
+        \hline Shohag & 40   & 42  & 78   & 67      \\
+        \hline
+    \end{tabular}
+
+\end{table}
+
+\lipsum[2]
+
+\begin{table}[!hbt]
+    \centering
+    \caption{Obtained Marks.}
+    \label{tab-marks-with-tabularx}
+
+    \begin{tabularx}{0.8\linewidth} {|X|X|X|X|X|}
+        \hline
+        \multirow{2}{*}{Name} & \multicolumn{4}{c|}{Subjects}                        \\
+        \cline{2-5}
+                              & Math                          & Phy & Chem & English \\
+        \hline
+        Sakib                 & 40                            & 42  & 78   & 67      \\
+        \hline
+        Tonmoy                & 40                            & 42  & 78   & 67      \\
+        \hline
+        Shohag                & 40                            & 42  & 78   & 67      \\
+        \hline
+    \end{tabularx}
+
+\end{table}
+This explains in the table \ref{tab-marks}, \ref{tab-marks-with-tabularx}.
+
+\vfil
+Fourier Series:
+\begin{equation}
+    f(x) = A_0 + \sum_{n=1}^{\infty} A_n \cdot \cos{(\frac{n\pi x}{L})} + \sum_{n=1}^{\infty} B_n \cdot \sin{(\frac{n\pi x}{l})}
+\end{equation}
+
+\section*{C++ Code Example:}
+
+\begin{lstlisting}[style=cppstyle, caption={Your C++ Code}, label={lst:cppcode}]
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

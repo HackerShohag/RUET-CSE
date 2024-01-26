@@ -1,0 +1,45 @@
+\documentclass{book}
+\usepackage{ulem}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+
+\title{2003028}
+\author{Md. Abdullah AL Mamun}
+\begin{document}
+
+\setlength{\topmargin}{5cm}
+\setlength{\rightmargin}{5cm}
+\setlength{\leftmargin}{5cm}
+
+\maketitle
+
+If $f(x,y)$ is a function, where $f$ partially depends on $x$ and $y$ and if we differentiate $f$ with respect to $x$ and $y$, then the derivatives are called the partial derivatives of $f$. The formula for the partial derivative of $f$ with respect to $x$, taking $y$ as a constant, is given by:
+
+\begin{center}
+    $f_x =  \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h,y)-f(x,y)}{h}$
+\end{center}
+
+And the partial derivative of $f$ with respect $y$ keeping $x$ as constant, we get;
+
+\begin{center}
+    $f_y =  \frac{\partial f}{\partial y} = \lim_{h \to 0} \frac{f(x,y+h)-f(x,y)}{h}$
+\end{center}
+
+The $Gradient$ of f at point (x0 , y0 ) is deﬁned as follows:
+
+\begin{center}
+    $\nabla f(x_0,y_0) =$
+    $\begin{bmatrix}
+            \frac{\partial f}{\partial x}(x_0,y_0) \\
+            \frac{\partial f}{\partial y}(x_0,y_0)
+        \end{bmatrix}$
+\end{center}
+\begin{center}
+    $=
+        \begin{matrix}
+            f_x \\
+            f_y
+        \end{matrix}$
+\end{center}
+
+\end{document}
