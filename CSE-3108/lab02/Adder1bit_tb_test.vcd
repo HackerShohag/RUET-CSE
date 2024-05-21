@@ -1,0 +1,62 @@
+$date
+	Sat May  4 12:06:45 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module Adder1bit_tb $end
+$var wire 1 ! S $end
+$var wire 1 " Cout $end
+$var reg 1 # A $end
+$var reg 1 $ B $end
+$var reg 1 % Cin $end
+$scope module uut $end
+$var wire 1 # A $end
+$var wire 1 $ B $end
+$var wire 1 % Cin $end
+$var wire 1 " Cout $end
+$var wire 1 ! S $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0%
+0$
+0#
+0"
+0!
+$end
+#20000
+1!
+1%
+#40000
+0%
+1$
+#60000
+1"
+0!
+1%
+#80000
+0"
+1!
+0%
+0$
+1#
+#100000
+1"
+0!
+1%
+#120000
+0%
+1$
+#140000
+1!
+1%
+#160000

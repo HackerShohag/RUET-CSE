@@ -13,11 +13,15 @@ MAIN PROC
                    MOV     AX, @DATA
                    MOV     DS, AX
 
+
+                   LEA     DX, MSG1
+                   MOV     AH, 9H
+                   INT     21H
                    CALL    INDEC
                    MOV     CX, AX
                    MOV     NUM, 2
     PRIME_LOOP:    
-                   MOV     DX, 0
+                   XOR     DX, DX
                    MOV     AX, CX
                    MOV     BX, NUM
                    DIV     BX
