@@ -1,0 +1,100 @@
+$date
+	Sat Jun  1 12:45:10 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module DownCounter_tb $end
+$var wire 5 ! count [4:0] $end
+$var reg 1 " clk $end
+$var reg 1 # reset $end
+$scope module dut $end
+$var wire 1 " clk $end
+$var wire 5 $ output_count [4:0] $end
+$var wire 1 # reset $end
+$var reg 5 % count [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b11111 %
+b11111 $
+1#
+0"
+b11111 !
+$end
+#5000
+1"
+#10000
+0"
+0#
+#15000
+b11110 !
+b11110 $
+b11110 %
+1"
+#20000
+0"
+#25000
+b11101 !
+b11101 $
+b11101 %
+1"
+#30000
+0"
+#35000
+b11100 !
+b11100 $
+b11100 %
+1"
+#40000
+0"
+#45000
+b11011 !
+b11011 $
+b11011 %
+1"
+#50000
+0"
+#55000
+b11010 !
+b11010 $
+b11010 %
+1"
+#60000
+0"
+#65000
+b11001 !
+b11001 $
+b11001 %
+1"
+#70000
+0"
+#75000
+b11000 !
+b11000 $
+b11000 %
+1"
+#80000
+0"
+#85000
+b10111 !
+b10111 $
+b10111 %
+1"
+#90000
+0"
+#95000
+b10110 !
+b10110 $
+b10110 %
+1"
+#100000
+0"

@@ -1,0 +1,45 @@
+$date
+	Tue Oct 22 23:34:31 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module comb1_tb $end
+$var wire 1 ! L $end
+$var reg 1 " A $end
+$var reg 1 # D $end
+$var reg 1 $ X $end
+$scope module uut $end
+$var wire 1 " A $end
+$var wire 1 # D $end
+$var wire 1 ! L $end
+$var wire 1 $ X $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0$
+0#
+0"
+0!
+$end
+#20000
+1!
+1"
+#40000
+0!
+1$
+#60000
+1#
+#80000
+0$
+#100000
+0"
+#120000
