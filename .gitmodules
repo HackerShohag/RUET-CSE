@@ -4,3 +4,6 @@
 [submodule "CSE-2102/lab05/matplotplusplus"]
 	path = CSE-2102/lab05/matplotplusplus
 	url = git@github.com:alandefreitas/matplotplusplus.git
+[submodule "EDGE-Projects"]
+	path = EDGE-Projects
+	url = git@github.com:HackerShohag/EDGE-Project.git
