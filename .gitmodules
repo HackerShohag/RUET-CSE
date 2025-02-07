@@ -7,6 +7,6 @@
 [submodule "EDGE-Projects"]
 	path = EDGE-Projects
 	url = git@github.com:HackerShohag/EDGE-Project.git
-[submodule "learning-xinu"]
-	path = learning-xinu
+[submodule "CSE-3202/learning-xinu"]
+	path = CSE-3202/learning-xinu
 	url = git@github.com:HackerShohag/learning-xinu.git
