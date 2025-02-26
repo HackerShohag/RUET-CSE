@@ -10,3 +10,6 @@
 [submodule "CSE-3202/learning-xinu"]
 	path = CSE-3202/learning-xinu
 	url = git@github.com:HackerShohag/learning-xinu.git
+[submodule "CSE-3206/googletest"]
+	path = CSE-3206/googletest
+	url = https://github.com/google/googletest.git
